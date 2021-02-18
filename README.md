@@ -19,3 +19,12 @@ you can also give your own dictionary to translate to
 >>> print(hexer.hexword("foodbabe")
 f00dbab3
 ```
+
+To run clone
+
+```bash
+git clone https://github.com/uttarayan21/hexwords
+cd hexwords
+git submodule init
+git submodule update
+```
