@@ -15,8 +15,11 @@ interface HexWordCardProps {
 class HexWordHeader extends React.Component {
   render() {
     return (
-      <Navbar bg="dark" variant="dark" className="mb-4">
+      <Navbar bg="dark" variant="dark" className="mb-4 justify-content-between">
         <Navbar.Brand href="#home">Hex Words</Navbar.Brand>
+        <Navbar.Text>
+          <a href="#faq">FAQ</a>
+        </Navbar.Text>
       </Navbar>
     );
   }
@@ -45,7 +48,11 @@ class HexWordCard extends React.Component<HexWordCardProps> {
             <Card.Title> {this.props.word} </Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Hex: 0x{this.props.hexword} </Card.Subtitle>
             <Card.Link href={"https://www.dictionary.com/browse/" + this.props.word} target="_blank">
-              <Button variant="light">View in Dictionary.com</Button>
+              <Button variant="link">View in Dictionary.com</Button>
+            </Card.Link>
+            <br />
+            <Card.Link href={"https://www.urbandictionary.com/define.php?term=" + this.props.word} target="_blank">
+              <Button variant="link">View in Urbandictionary.com</Button>
             </Card.Link>
           </Card.Body>
         </Card>
@@ -54,23 +61,32 @@ class HexWordCard extends React.Component<HexWordCardProps> {
   }
 }
 
-class HexWordDisclaimer extends React.Component {
+class HexWordFaq extends React.Component {
   render() {
     return (
-      <Container className="mb-4">
-        <Button variant="light" data-toggle="collapse" data-target="#faq">
-          Faq
-        </Button>
-        <div className="collapse" id="faq">
-          <h5>Q: What is this ?</h5>
-          <h6>Ans: A list of english words that can be represented using hex digits </h6>
-          <h5>Q: Why ? </h5>
-          <h6>
-            Ans: I saw a video on liveoverflow's youtube channel where the hex value 0xf00dbabe was written to and
-            address. And wanted to explore more similar things.
-          </h6>
-          <p> Some of the words in the wordlist don't seem to have a dictionary entry</p>
-          <p> Also this is my first react app so there might still be a lot of bugs </p>
+      <Container className="mt-4">
+        <div id="faq">
+          <p>Q: What is this ?</p>
+          <p>Ans: A list of english words that can be represented using hex digits </p>
+          <p>Q: Why ? </p>
+          <p>
+            Ans: I saw a <a href="https://youtu.be/nNBktKw9Is4?t=96">video</a> on{" "}
+            <a href="https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w">liveoverflow's</a> youtube channel where
+            the hex value 0xf00dbabe was written to and address. And so I wanted to explore if similar names existed.
+          </p>
+          <p>Q: Where is the code ?</p>
+          <p>
+            A python code is here <a href="https://github.com/uttarayan21/hexwords">uttarayan21/hexwords</a>
+            <br />
+            The code for this website is on the same repo just in the{" "}
+            <a href="https://github.com/uttarayan21/hexwords/tree/master/docs">docs</a> directory
+          </p>
+          <p>Q: Why is this so buggy ?</p>
+          <p>Ans: Also this is my first react app so there might still be a lot of bugs </p>
+          <p>Q: Why do some words don't have meaning or gets redirected to something else ?</p>
+          <p>Some of the words in the wordlist don't seem to have a dictionary entry</p>
+          <p>Q: More features ?</p>
+          <p>I also want to add stuff like filter and custom values for the english letters </p>
         </div>
       </Container>
     );
@@ -82,8 +98,8 @@ class HexWord extends React.Component {
     return (
       <div>
         <HexWordHeader />
-        <HexWordDisclaimer />
         <HexWordList />
+        <HexWordFaq />
       </div>
     );
   }
